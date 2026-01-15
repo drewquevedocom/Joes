@@ -129,13 +129,13 @@ const App = () => {
         monthlyTerm: "18-Month Term",
         setupItems: ["Full Website Build", "Kiosk & TV Setup", "Google Optimization"],
         monthlyItems: ["Hosting & Maintenance", "Booking System Fees", "Voice AI Minutes"],
-        hardwareNote: "*Hardware (TV, Chromecast, Tablet) provided by client or purchased separately (~$400 total)."
+        hardwareNote: "*Hardware (TV, Chromecast, Tablet) provided by client or purchased separately (~$400 total).",
+        overageNote: "** Includes standard monthly credits for AI Voice, SMS & Email. Usage beyond limits billed at provider cost."
       },
 
       cta: {
         title: "Ready to Upgrade?",
         text: "Your 30-year legacy deserves a system that secures the next 30 years. Let's get to work.",
-        btnPrimary: "Approve Proposal",
         btnSecondary: "Call Drew (818) 807-0200",
         finePrint: "By approving, you authorize the $200 setup fee and the $200/month agreement."
       }
@@ -264,13 +264,13 @@ const App = () => {
         monthlyTerm: "Plazo de 18 Meses",
         setupItems: ["Desarrollo Web Completo", "Configuración de Quiosco y TV", "Optimización Google"],
         monthlyItems: ["Hosting y Mantenimiento", "Tarifas del Sistema de Reservas", "Minutos de Voz IA"],
-        hardwareNote: "*Hardware (TV, Chromecast, Tableta) proporcionado por el cliente o comprado por separado (~$400 total)."
+        hardwareNote: "*Hardware (TV, Chromecast, Tableta) proporcionado por el cliente o comprado por separado (~$400 total).",
+        overageNote: "** Incluye créditos mensuales estándar para Voz IA, SMS y Email. El exceso se factura al costo del proveedor."
       },
 
       cta: {
         title: "¿Listo para Actualizar?",
         text: "Tu legado de 30 años merece un sistema que asegure los próximos 30 años. Manos a la obra.",
-        btnPrimary: "Aprobar Propuesta",
         btnSecondary: "Llamar a Drew (818) 807-0200",
         finePrint: "Al aprobar, autorizas la tarifa de configuración de $200 y el acuerdo de $200/mes."
       }
@@ -482,6 +482,8 @@ const App = () => {
           </div>
           <p style={{textAlign: "center", marginTop: "30px", fontSize: "0.9em", color: "#666", fontStyle: "italic"}}>
             {t.pricing.hardwareNote}
+            <br />
+            {t.pricing.overageNote}
           </p>
       </section>
 
@@ -493,7 +495,6 @@ const App = () => {
           </p>
           
           <div className="cta-group">
-              <button className="cta-btn">{t.cta.btnPrimary}</button>
               <a href="tel:8189929871" className="cta-btn-secondary">{t.cta.btnSecondary}</a>
           </div>
 
