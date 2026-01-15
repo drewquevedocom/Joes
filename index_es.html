@@ -49,7 +49,8 @@
         padding: 80px 60px;
         text-align: center;
         position: relative;
-        background-image: linear-gradient(rgba(17,17,17,0.9), rgba(17,17,17,0.95)), url('https://images.unsplash.com/photo-1503951914875-befbb713d052?q=80&w=2000&auto=format&fit=crop');
+        /* Black texture with nice fade */
+        background-image: linear-gradient(180deg, rgba(15,15,15,0.85) 0%, rgba(5,5,5,1) 100%), url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000&auto=format&fit=crop');
         background-size: cover;
         background-position: center;
       }
@@ -148,27 +149,29 @@
         overflow: hidden;
       }
       .design-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         border-color: var(--primary-gold);
       }
       .design-image-container {
         width: 100%;
-        height: 400px;
+        height: 220px;
         overflow: hidden;
-        border-bottom: 5px solid var(--primary-gold);
-        background: #f0f0f0;
+        border-bottom: 3px solid var(--primary-gold);
+        background: #f4f1ea;
         position: relative;
+        padding: 10px;
       }
       .design-image-container img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
         display: block;
         transition: transform 0.5s ease;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       }
       .design-card:hover .design-image-container img {
-        transform: scale(1.05);
+        transform: scale(1.02);
       }
       .design-info { padding: 30px; text-align: center; }
       .design-info h4 { margin-bottom: 10px; font-size: 1.4em; }
@@ -298,14 +301,17 @@
 
       /* Pricing */
       .pricing-wrapper {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        display: flex;
+        flex-wrap: wrap;
         gap: 0;
         border: 1px solid var(--primary-dark);
       }
       .pricing-card {
         padding: 50px;
         background: white;
+        flex: 1;
+        width: 50%;
+        min-width: 300px;
       }
       .pricing-card.dark {
         background: var(--primary-dark);
@@ -397,7 +403,7 @@
         .stat-box { border-right: none; border-bottom: 1px solid #333; }
         .letter-section { padding: 40px 20px; }
         .cta-group { flex-direction: column; }
-        .design-image-container { height: 250px; }
+        .design-image-container { height: 200px; }
       }
     </style>
 </head>
@@ -471,6 +477,11 @@
                 </div>
                 <div class="flow-arrow"><i class="fas fa-long-arrow-alt-right"></i></div>
                 <div class="flow-node">
+                    <i class="fas fa-credit-card"></i>
+                    <span>Pago<br>(Stripe)</span>
+                </div>
+                <div class="flow-arrow"><i class="fas fa-long-arrow-alt-right"></i></div>
+                <div class="flow-node">
                     <i class="fas fa-cut"></i>
                     <span>Entrega de<br>Servicio</span>
                 </div>
@@ -482,7 +493,43 @@
             </div>
         </div>
 
-        <div class="workflow-container">
+        <!-- NEW BARBER WORKFLOW -->
+        <div class="workflow-container" style="margin-top: 40px;">
+            <div class="workflow-title">Flujo del Barbero (Pagos y Propinas)</div>
+            <div class="flow-row">
+                <div class="flow-node">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Añadir<br>Cliente</span>
+                </div>
+                <div class="flow-arrow"><i class="fas fa-long-arrow-alt-right"></i></div>
+                <div class="flow-node">
+                    <i class="fas fa-cut"></i>
+                    <span>Servicio<br>Completado</span>
+                </div>
+                <div class="flow-arrow"><i class="fas fa-long-arrow-alt-right"></i></div>
+                <div class="flow-node">
+                    <i class="fas fa-comment-dollar"></i>
+                    <span>Enlace de Pago<br>SMS</span>
+                </div>
+                <div class="flow-arrow"><i class="fas fa-long-arrow-alt-right"></i></div>
+                <div class="flow-node">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <span>Pago +<br>Propina</span>
+                </div>
+                <div class="flow-arrow"><i class="fas fa-long-arrow-alt-right"></i></div>
+                <div class="flow-node">
+                    <i class="fas fa-bell"></i>
+                    <span>Alerta<br>de Propina</span>
+                </div>
+                <div class="flow-arrow"><i class="fas fa-long-arrow-alt-right"></i></div>
+                <div class="flow-node">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Ticket<br>Cerrado</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="workflow-container" style="margin-top: 40px;">
             <div class="workflow-title">Centro de Control del Dueño</div>
             <div class="flow-row">
                 <div class="flow-node">
@@ -585,6 +632,15 @@
                 </tr>
             </tbody>
         </table>
+
+        <!-- FULL WIDTH HARDWARE IMAGE -->
+        <div class="design-image-container" style="height: 400px; margin-top: 40px; border-bottom: none; background: transparent; padding: 0;">
+            <!-- Placeholder for the specific Booking Kiosk image -->
+            <img src="barber-kiosk-setup.jpg" 
+                 onerror="this.src='https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?q=80&w=1200&auto=format&fit=crop'" 
+                 alt="Hardware Suite - Kiosk Setup" 
+                 style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px; box-shadow: 0 15px 30px rgba(0,0,0,0.15);">
+        </div>
     </section>
 
     <!-- OPEX COSTS -->
@@ -711,7 +767,7 @@
         
         <div class="cta-group">
             <!-- Primary CTA linking to Stripe -->
-            <a href="https://buy.stripe.com/test_placeholder" class="cta-btn">Aprobar Propuesta ($499)</a>
+            <a href="https://buy.stripe.com/test_placeholder" class="cta-btn">Aprobar Propuesta ($499 <s style="opacity:0.7; font-size:0.8em;">$999</s> 50% Dto)</a>
             
             <!-- Secondary CTA calling Drew -->
             <a href="tel:8188070200" class="cta-btn-secondary">Llamar a Drew 818.807.0200</a>

@@ -49,7 +49,8 @@
         padding: 80px 60px;
         text-align: center;
         position: relative;
-        background-image: linear-gradient(rgba(17,17,17,0.9), rgba(17,17,17,0.95)), url('https://images.unsplash.com/photo-1503951914875-befbb713d052?q=80&w=2000&auto=format&fit=crop');
+        /* Busy Barbershop with 50% Fade */
+        background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=2000&auto=format&fit=crop');
         background-size: cover;
         background-position: center;
       }
@@ -85,6 +86,8 @@
         letter-spacing: 1px;
         font-size: 0.85em;
         transition: all 0.3s;
+        cursor: pointer;
+        z-index: 10;
       }
       .lang-toggle:hover { background: var(--primary-gold); color: var(--primary-dark); }
 
@@ -148,100 +151,33 @@
         overflow: hidden;
       }
       .design-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         border-color: var(--primary-gold);
       }
       .design-image-container {
         width: 100%;
-        height: 400px;
+        height: 220px;
         overflow: hidden;
-        border-bottom: 5px solid var(--primary-gold);
-        background: #f0f0f0;
+        border-bottom: 3px solid var(--primary-gold);
+        background: #f4f1ea;
         position: relative;
+        padding: 10px;
       }
       .design-image-container img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
         display: block;
         transition: transform 0.5s ease;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       }
       .design-card:hover .design-image-container img {
-        transform: scale(1.05);
+        transform: scale(1.02);
       }
       .design-info { padding: 30px; text-align: center; }
       .design-info h4 { margin-bottom: 10px; font-size: 1.4em; }
       .design-info p { font-size: 0.9em; color: #666; margin-bottom: 0; }
-
-      /* Workflow Schematics (CSS Only) */
-      .workflow-container {
-        margin: 40px 0;
-        padding: 40px;
-        background: #fff;
-        border: 3px solid #111;
-        border-radius: 4px;
-        text-align: center;
-      }
-      .workflow-title {
-        font-family: 'Courier New', monospace;
-        text-transform: uppercase;
-        font-weight: bold;
-        font-size: 1.2em;
-        margin-bottom: 40px;
-        border-bottom: 2px solid #ccc;
-        display: inline-block;
-        padding-bottom: 5px;
-      }
-      .flow-row {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 30px;
-      }
-      .flow-node {
-        width: 120px;
-        height: 120px;
-        border: 3px solid #111;
-        border-radius: 50%;
-        background: #fff;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        z-index: 2;
-        transition: all 0.3s ease;
-      }
-      .flow-node:hover {
-        background: var(--primary-gold);
-        color: white;
-        border-color: var(--primary-gold);
-        transform: scale(1.1);
-      }
-      .flow-node:hover i { color: white; }
-      .flow-node i {
-        font-size: 2em;
-        margin-bottom: 10px;
-        color: #111;
-        transition: color 0.3s;
-      }
-      .flow-node span {
-        font-family: 'Roboto Condensed', sans-serif;
-        font-weight: bold;
-        font-size: 0.85em;
-        text-transform: uppercase;
-        line-height: 1.1;
-      }
-      .flow-arrow {
-        font-size: 1.5em;
-        color: #ccc;
-      }
-      @media (max-width: 768px) {
-        .flow-row { flex-direction: column; }
-        .flow-arrow { transform: rotate(90deg); margin: 10px 0; }
-      }
 
       /* Tables */
       .data-table {
@@ -298,14 +234,17 @@
 
       /* Pricing */
       .pricing-wrapper {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        display: flex;
+        flex-wrap: wrap;
         gap: 0;
         border: 1px solid var(--primary-dark);
       }
       .pricing-card {
         padding: 50px;
         background: white;
+        flex: 1;
+        width: 50%;
+        min-width: 300px;
       }
       .pricing-card.dark {
         background: var(--primary-dark);
@@ -326,16 +265,6 @@
         align-items: center;
       }
       .features-list li i { color: var(--primary-gold); margin-right: 15px; }
-
-      /* Marketing Upsell */
-      .upsell-section {
-        background: #111;
-        color: white;
-        padding: 60px;
-        border-top: 5px solid var(--primary-gold);
-      }
-      .upsell-section h3 { color: white; }
-      .upsell-section p { color: #ccc; }
 
       /* CTA */
       .cta-footer {
@@ -397,330 +326,23 @@
         .stat-box { border-right: none; border-bottom: 1px solid #333; }
         .letter-section { padding: 40px 20px; }
         .cta-group { flex-direction: column; }
-        .design-image-container { height: 250px; }
+        .design-image-container { height: 200px; }
       }
     </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.2.0",
+    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+    "react/jsx-runtime": "https://esm.sh/react@18.2.0/jsx-runtime",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/"
+  }
+}
+</script>
 </head>
 <body>
-
-<div class="container">
-    <header class="header">
-        <a href="./index_es.html" class="lang-toggle">Español</a>
-        <h1>Joe's Barber Shop</h1>
-        <h2>Strategic Business Automation Proposal</h2>
-        <p style="font-family: 'Playfair Display', serif; font-style: italic; opacity: 0.8; margin-top: 10px;">Confidential Strategy Document • Dec 2025</p>
-    </header>
-
-    <!-- THE CONSULTANT'S LETTER -->
-    <div class="letter-section">
-        <p style="text-transform: uppercase; color: #888; font-size: 0.8em; letter-spacing: 2px; margin-bottom: 30px;">From the desk of Drew Quevedo</p>
-        
-        <h3 style="font-size: 2em; margin-bottom: 25px;">Listen, Joe. Let's talk business.</h3>
-        
-        <p>I've been consulting for <strong>25 years</strong>, and I've seen a lot of "flash in the pan" ideas. Most of them are trash. But this? This is different.</p>
-        
-        <p>You have a <strong>real problem</strong>: No-shows are bleeding your revenue dry. A barber losing 15% of revenue to no-shows is throwing away $5,000 to $10,000 a year. That's a vacation. That's a new car payment. That's gone.</p>
-        
-        <p>What I have built for you here is <strong>GOLD</strong>. It's not just a website; it's a <strong>revenue recovery engine</strong>. It solves the problem, it's easy to sell to your customers because it makes their lives easier, and the math creates an ROI that pays for itself in 30 days.</p>
-        
-        <p>In 12 months, you won't just be a barber; you'll be the guy running a fully automated, recession-proof business system. <strong>You've got this.</strong> Now let's build it.</p>
-
-        <div class="signature">Drew Quevedo</div>
-    </div>
-
-    <!-- THE REALITY CHECK -->
-    <div class="stats-grid">
-        <div class="stat-box">
-            <div class="stat-number">15%</div>
-            <div class="stat-label">Current No-Show Rate</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-number">$10k+</div>
-            <div class="stat-label">Annual Revenue Leaking</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-number">14 Days</div>
-            <div class="stat-label">To Full Launch</div>
-        </div>
-    </div>
-
-    <!-- WORKFLOW DIAGRAMS -->
-    <section class="section">
-        <div class="section-header">
-            <span class="sub">System Blueprints</span>
-            <h3>How The Money Moves</h3>
-            <p>A transparent look at how the system automates your business flow.</p>
-        </div>
-
-        <div class="workflow-container">
-            <div class="workflow-title">Customer Journey</div>
-            <div class="flow-row">
-                <div class="flow-node">
-                    <i class="fas fa-mobile-alt"></i>
-                    <span>Booking<br>(Web/SMS)</span>
-                </div>
-                <div class="flow-arrow"><i class="fas fa-long-arrow-alt-right"></i></div>
-                <div class="flow-node">
-                    <i class="fas fa-server"></i>
-                    <span>AI Engine<br>(Processing)</span>
-                </div>
-                <div class="flow-arrow"><i class="fas fa-long-arrow-alt-right"></i></div>
-                <div class="flow-node">
-                    <i class="fas fa-calendar-check"></i>
-                    <span>Google<br>Calendar</span>
-                </div>
-                <div class="flow-arrow"><i class="fas fa-long-arrow-alt-right"></i></div>
-                <div class="flow-node">
-                    <i class="fas fa-cut"></i>
-                    <span>Service<br>Delivery</span>
-                </div>
-                <div class="flow-arrow"><i class="fas fa-long-arrow-alt-right"></i></div>
-                <div class="flow-node">
-                    <i class="fas fa-star"></i>
-                    <span>Review<br>Request</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="workflow-container">
-            <div class="workflow-title">Owner Control Center</div>
-            <div class="flow-row">
-                <div class="flow-node">
-                    <i class="fas fa-tablet-alt"></i>
-                    <span>Galaxy Tab<br>Dashboard</span>
-                </div>
-                <div class="flow-arrow"><i class="fas fa-long-arrow-alt-right"></i></div>
-                <div class="flow-node">
-                    <i class="fas fa-users"></i>
-                    <span>Staff<br>Tracking</span>
-                </div>
-                <div class="flow-arrow"><i class="fas fa-plus"></i></div>
-                <div class="flow-node">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Revenue<br>Analytics</span>
-                </div>
-                <div class="flow-arrow"><i class="fas fa-plus"></i></div>
-                <div class="flow-node">
-                    <i class="fas fa-database"></i>
-                    <span>Client<br>Database</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- DESIGN STRATEGY -->
-    <section class="section">
-        <div class="section-header">
-            <span class="sub">Visual Standards</span>
-            <h3>Design Inspiration</h3>
-            <p>We model success. These are the two award-winning aesthetic standards we will target for your brand.</p>
-        </div>
-
-        <div class="design-grid">
-            <!-- Example 1: Braber -->
-            <a href="https://braber.peerduck.com/perfect-cut/" target="_blank" class="design-card">
-                <div class="design-image-container">
-                    <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=1000&auto=format&fit=crop" alt="Classic Barber Style">
-                </div>
-                <div class="design-info">
-                    <h4>The "Classic" Model</h4>
-                    <p>Timeless, Gold & Cream, Heritage feel. (Reference: Braber)</p>
-                </div>
-            </a>
-
-            <!-- Example 2: Becho -->
-            <a href="https://ap-becko.myshopify.com/" target="_blank" class="design-card">
-                <div class="design-image-container">
-                    <img src="https://images.unsplash.com/photo-1622296089863-eb7fc530daa8?q=80&w=1000&auto=format&fit=crop" alt="Modern Barber Style">
-                </div>
-                <div class="design-info">
-                    <h4>The "Modern" Model</h4>
-                    <p>Bold, Dark, High-Contrast. (Reference: Becho)</p>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <!-- HARDWARE LIST -->
-    <section class="section">
-        <div class="section-header">
-            <span class="sub">Infrastructure</span>
-            <h3>The Hardware Suite</h3>
-            <p>Professional tools for a professional operation. This is your shopping list.</p>
-        </div>
-
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th>Item</th>
-                    <th>Purpose</th>
-                    <th>Est. Cost</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Samsung Galaxy Tab S9 FE</strong></td>
-                    <td>Owner Master Control & Dashboard</td>
-                    <td>$449</td>
-                </tr>
-                <tr>
-                    <td><strong>Amazon Fire HD 10</strong></td>
-                    <td>Kiosk for Front Desk Booking</td>
-                    <td>$150</td>
-                </tr>
-                <tr>
-                    <td><strong>Security Stand</strong></td>
-                    <td>Anti-theft mount for Kiosk</td>
-                    <td>$200</td>
-                </tr>
-                <tr>
-                    <td><strong>43" 4K Smart TV</strong></td>
-                    <td>Waiting Room "Queue Board"</td>
-                    <td>$250</td>
-                </tr>
-                <tr>
-                    <td><strong>Fire TV Stick 4K</strong></td>
-                    <td>Powers the TV Display</td>
-                    <td>$55</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <!-- OPEX COSTS -->
-    <section class="section" style="background-color: #fcfbf8;">
-        <div class="section-header">
-            <span class="sub">Operating Expenses</span>
-            <h3>Required Software Monthly Costs</h3>
-            <p>Transparency is the hallmark of a good partnership. These are the tools that power the system. You pay these providers directly at cost.</p>
-        </div>
-
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th>Software Service</th>
-                    <th>Base Monthly Cost</th>
-                    <th>Usage / Overage Costs</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Google Workspace</strong><br><small>Email, Calendar, Cloud Storage</small></td>
-                    <td>~$12.00 / month</td>
-                    <td>Flat rate per user.</td>
-                </tr>
-                <tr>
-                    <td><strong>Vonage (SMS & Voice)</strong><br><small>Powers the AI text & voice bots</small></td>
-                    <td>~$5.00 / month<br><small>(Base number rental)</small></td>
-                    <td>
-                        <strong>SMS:</strong> ~$0.007 per message<br>
-                        <strong>Voice AI:</strong> ~$0.02 per minute<br>
-                        <em>Typical month: ~$10-$15 total</em>
-                    </td>
-                </tr>
-                <tr>
-                    <td><strong>Stripe Payments</strong><br><small>Credit Card Processing</small></td>
-                    <td>$0.00 / month</td>
-                    <td>
-                        <strong>2.9% + 30¢</strong> per transaction.<br>
-                        <em>Pass this fee to client or absorb as cost of business.</em>
-                    </td>
-                </tr>
-                <tr>
-                    <td><strong>Web Hosting</strong><br><small>Lovable.dev Architecture</small></td>
-                    <td>INCLUDED</td>
-                    <td>Covered in your $199 management fee.</td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="consultant-note" style="margin-top: 20px;">
-            Consultant's Note: If your volume explodes (a good problem to have), your SMS costs will rise slightly, but your revenue will rise significantly more. It scales with you.
-        </div>
-    </section>
-
-    <!-- TIMELINE -->
-    <section class="section">
-        <div class="section-header">
-            <span class="sub">The Execution Plan</span>
-            <h3>The 14-Day Sprint</h3>
-            <p>Time kills deals. We don't drag this out. From handshake to launch in two weeks.</p>
-        </div>
-
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-week">Week 1: Foundation & Setup</div>
-                <p>• <strong>Day 1-2:</strong> Account Setup (Google, Stripe, Vonage). Domain acquisition.<br>
-                • <strong>Day 3-5:</strong> Core Build. Website deployment. Dashboard configuration. You order the hardware.<br>
-                • <strong>Day 6-7:</strong> Data Entry. We input your services, prices, and staff schedules.</p>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-week">Week 2: Integration & Launch</div>
-                <p>• <strong>Day 8-10:</strong> AI Training. We configure the voice and text bots to speak "Barber".<br>
-                • <strong>Day 11-12:</strong> Hardware Setup. We mount the TV and Kiosk. Sync all devices.<br>
-                • <strong>Day 13:</strong> Staff Training. I personally ensure your team knows how to use the tablet.<br>
-                • <strong>Day 14:</strong> <strong>GO LIVE.</strong></p>
-            </div>
-        </div>
-    </section>
-
-    <!-- PRICING -->
-    <section class="section" style="padding: 0;">
-        <div class="pricing-wrapper">
-            <div class="pricing-card">
-                <h4>System Development</h4>
-                <div class="price">$499 <span>One-Time Fee</span></div>
-                <p>This is the setup. I build the engine. I connect the pipes. I set up the AI, the database, the payments, and I personally train your staff until they are comfortable.</p>
-                <ul class="features-list">
-                    <li><i class="fas fa-check"></i> Custom Architecture & Design</li>
-                    <li><i class="fas fa-check"></i> Full Bilingual AI Configuration</li>
-                    <li><i class="fas fa-check"></i> Google/Stripe/Vonage Integration</li>
-                    <li><i class="fas fa-check"></i> 2 Weeks On-Site Launch Support</li>
-                </ul>
-            </div>
-            <div class="pricing-card dark">
-                <h4>System Management</h4>
-                <div class="price">$199 <span>/ Month</span></div>
-                <p>This is your insurance policy. I keep the engine running. I monitor it 24/7. If something breaks, I fix it before you even know it's broken.</p>
-                <ul class="features-list">
-                    <li><i class="fas fa-check"></i> Enterprise-Grade Hosting Included</li>
-                    <li><i class="fas fa-check"></i> <strong>24-Hour Hardware Support Response</strong></li>
-                    <li><i class="fas fa-check"></i> Unlimited Feature Tweaks</li>
-                    <li><i class="fas fa-check"></i> Monthly Strategy Call</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- UPSELL -->
-    <div class="upsell-section">
-        <div class="section-header" style="margin-bottom: 20px;">
-            <span class="sub" style="color: var(--primary-gold);">Phase 2: Growth</span>
-            <h3>The Marketing Engine</h3>
-        </div>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto;">
-            What you are buying today is the <strong>Operations System</strong>—it organizes your house. Once this is stable, we can discuss <strong>Phase 2: The Marketing System</strong>. This includes automated Google Ads, Instagram Retargeting, and Reputation Management to fill the empty slots in your calendar. 
-            <br><br>
-            <em>Let's build the foundation first, then we build the skyscraper.</em>
-        </p>
-    </div>
-
-    <!-- CTA -->
-    <div class="cta-footer">
-        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5em; margin-bottom: 20px;">Let's Build Your Legacy.</h2>
-        <p style="font-size: 1.2em; max-width: 600px; margin: 0 auto;">Every day you wait is another day of lost revenue. Another $40 walking out the door. Let's stop the bleeding and start growing.</p>
-        
-        <div class="cta-group">
-            <!-- Primary CTA linking to Stripe -->
-            <a href="https://buy.stripe.com/test_placeholder" class="cta-btn">Approve Proposal ($499)</a>
-            
-            <!-- Secondary CTA calling Drew -->
-            <a href="tel:8188070200" class="cta-btn-secondary">Call Drew 818.807.0200</a>
-        </div>
-
-        <p class="fine-print">By approving, you authorize the one-time $499 development fee and the automatic recurring subscription of $199/month commencing 30 days after project kickoff.</p>
-    </div>
-
-</div>
-
+    <div id="root"></div>
+    <script type="module" src="index.tsx"></script>
 </body>
 </html>
